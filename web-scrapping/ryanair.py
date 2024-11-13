@@ -23,22 +23,12 @@ def init_driver():
     return driver
 
 
-# Get and validate user input for travel date
-def get_date_input():
-    while True:
-        day_input = input("Enter Travelling day (dd): ")
-        month_input = input("Enter Travelling month (mm): ")
-        try:
-            day = int(day_input)
-            month = int(month_input)
-            if 1 <= day <= 31 and 1 <= month <= 12:
-                return datetime(2024, month, day)
-            else:
-                print("Invalid day or month. Enter a valid day (1-31) and month (1-12).")
-        except ValueError:
-            print("Invalid input. Please enter numbers for day and month.")
-
-
+# Calculate today's date and next week's date range
+def get_date_range():
+    today = datetime.today()
+    start_date = today  # Today
+    end_date = today + timedelta(days=14)  # 14
+    return start_date, end_date
 # Construct the URL for the Ryanair flight search page
 def construct_url(start_location, date):
     date_input = date.strftime("%Y-%m-%d")
@@ -91,14 +81,14 @@ def scrape_flight_data(driver, url):
 
 
 # Collect data for multiple dates and locations
-def collect_flight_data(start_date, starting_locations):
+def collect_flight_data(start_date, end_date, starting_locations):
     driver = init_driver()
     all_flight_data = []
 
     try:
         for start_location in starting_locations:
-            for i in range(-3, 4):
-                current_date = start_date + timedelta(days=i)
+            current_date = start_date
+            while current_date <= end_date:
                 url = construct_url(start_location, current_date)
                 flight_data = scrape_flight_data(driver, url)
 
@@ -112,6 +102,8 @@ def collect_flight_data(start_date, starting_locations):
                         'URL': url
                     })
                     all_flight_data.append(data)
+
+                current_date += timedelta(days=1)
 
     finally:
         driver.quit()
@@ -130,11 +122,13 @@ def create_dataframe(flight_data):
 
 # Main function to run the full scraping process
 def raynair_data():
-    start_date = get_date_input()
-    starting_locations = ['BHX', 'STN']
-    flight_data = collect_flight_data(start_date, starting_locations)
+    start_date, end_date = get_date_range()  # Get today's date and the next 6 days
+    starting_locations = ['BHX', 'STN']  # You can change this to other locations if needed
+    flight_data = collect_flight_data(start_date, end_date, starting_locations)
     df = create_dataframe(flight_data)
     print(df)
     df.to_csv('flight_data.csv', index=False)  # Save data to CSV
 
 
+# Run the script
+raynair_data()
