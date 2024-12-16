@@ -1,67 +1,58 @@
-import requests
-from datetime import datetime
-import sys
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
+# Initialize the web driver
+driver = webdriver.Chrome()  # Replace with your web driver (e.g., `webdriver.Firefox()`)
 
-def get_max_bookable_date(dest, origin):
-    # Validate the input parameters
-    if not dest:
-        print("Error: missing 'dest' parameter")
-        return
-    if not origin:
-        print("Error: missing 'origin' parameter")
-        return
+try:
+    # Navigate to EasyJet's website
+    driver.get("https://www.easyjet.com/en")
 
-    # Prepare today's date in the required format
-    today_str = datetime.now().strftime("%Y-%m-%d")
+    # Wait for the page to load
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "from")))
 
-    # Set up the request parameters
-    url = 'https://www.easyjet.com/ejcms/nocache/api/lowestfares/get/'
-    params = {
-        'destinationIata': dest,
-        'displayCurrencyId': '0',
-        'languageCode': 'en-US',
-        'originIata': origin,
-        'startDate': today_str
-    }
-    headers = {
-        'cache-control': 'no-cache',
-        'accept': 'application/json, text/plain, */*',
-        'accept-encoding': 'gzip, deflate, sdch, br'
-    }
+    # Enter departure airport
+    departure = driver.find_element(By.ID, "from")
+    departure.send_keys("London (All Airports)")
+    time.sleep(2)
+    departure.send_keys(Keys.RETURN)
 
-    # Make the API request
-    try:
-        response = requests.get(url, params=params, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-    except requests.RequestException as e:
-        print("Error making request:", e)
-        return
+    # Enter arrival airport
+    arrival = driver.find_element(By.ID, "to")
+    arrival.send_keys("SOF")
+    time.sleep(2)
+    arrival.send_keys(Keys.RETURN)
 
-    # Process the response to find the farthest available date
-    farthest_date = datetime.now()
-    for month in data.get('months', []):
-        year = month['year']
-        month_num = month['month'] - 1  # Adjust for 0-based month indexing in datetime
-        for day_obj in month.get('days', []):
-            if day_obj['flightStatus'] > 0:
-                date = datetime(year, month_num + 1, day_obj['day'])
-                if date > farthest_date:
-                    farthest_date = date
+    # Select departure date
+    date_picker = driver.find_element(By.ID, "when")
+    date_picker.send_keys('18/11/2024 - One way')
+    time.sleep(2)
 
-    # Display the farthest available date
-    print("Farthest bookable date:", farthest_date.strftime("%Y-%m-%d"))
+    # Select a date (example: select the 15th of the next month)
+    next_month_button = driver.find_element(By.CSS_SELECTOR, ".ui-datepicker-next")
+    next_month_button.click()
+    time.sleep(1)
+    date = driver.find_element(By.XPATH, "//a[text()='15']")
+    date.click()
 
+    # Submit the search
+    search_button = driver.find_element(By.ID, "search-button")
+    search_button.click()
 
-# Input Parameters
-if __name__ == "__main__":
-    # Either provide dest and origin as arguments or directly in the code
-    if len(sys.argv) == 3:
-        dest = sys.argv[1]
-        origin = sys.argv[2]
-    else:
-        dest = input("Enter destination IATA code: ")
-        origin = input("Enter origin IATA code: ")
+    # Wait for search results to load
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "search-results")))
 
-    get_max_bookable_date(dest, origin)
+    # Print search results (basic example)
+    results = driver.find_elements(By.CLASS_NAME, "search-result")
+    for result in results:
+        print(result.text)
+
+except Exception as e:
+    print(f"An error occurred: {e}")
+finally:
+    # Close the browser
+    driver.quit()
