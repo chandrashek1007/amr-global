@@ -1,0 +1,260 @@
+/* Container for the whole search section */
+.flight-search-container {
+    max-width: 90%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    padding: 2rem;
+  }
+  
+  /* Heading styling */
+  
+  h1 {
+    margin: 0; /* Remove unnecessary margin */
+    text-align: center; /* Center text if multi-line */
+  }
+  h2 {
+    margin-top: 3rem;
+    text-align: left;
+    margin-bottom: 3rem;
+  }
+  
+  /* Flexbox for the form to align form elements side by side */
+  .search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  /* Each form group will take up 45% of the width for side-by-side layout */
+  .form-group {
+    flex: 1 1 20%; /* Makes the form fields side by side */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label styling */
+  .form-group label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .error {
+    color: #883b37; /* Red color for error text */
+    background-color: #fdecea; /* Light red background for emphasis */
+    padding: 10px; /* Add some padding around the error text */
+    border: 1px solid #f44336; /* Add a red border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px; /* Adjust font size */
+    margin-top: 1rem; /* Add spacing above the error message */
+    margin-bottom: 1.5rem;
+}
+  
+  /* Input and select styling */
+  .form-group input {
+    padding: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    width: 90%;
+    height: 2rem;
+  }
+
+   /* Input and select styling */
+   .form-group select {
+    width: 90%;
+    padding: 0.3rem;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 0.8rem;
+     height: 2rem;
+   }
+  
+  /* Button styling */
+  .button-group {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  
+  /* Search and Clear button styling */
+  .search-button,
+  .clear-button {
+    height: 2rem;
+    padding: 1rem 2rem;
+    width: 8rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  .button-text{
+    height: 100%;
+    display: flex;
+    font-size: 0.9rem;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  /* Search button color */
+  .search-button {
+    background-color: #d93632;
+    color: #fff;
+  }
+  
+  .search-button:hover {
+    background-color: #cf9291;
+  }
+  
+  /* Clear button color */
+  .clear-button {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .clear-button:hover {
+    background-color: #878585;
+  }
+  
+  /* Table results container */
+  .results-container {
+    margin-top: 30px;
+  }
+  
+  /* Flexbox for displaying tables side by side */
+  .tables-column-container {
+    display: flex;
+    justify-content: space-between; /* Aligns the tables side by side */
+    gap: 20px; /* Adds space between the tables */
+    flex-direction: column;
+  }
+  
+  /* Each table wrapper (for responsive behavior) */
+  .table-wrapper {
+    flex: 1; /* Ensures each table takes up equal space */
+    overflow-x: auto; /* In case the table is too wide, add horizontal scrolling */
+  }
+  
+  /* Styling for the results table */
+  .results-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove gaps between cells */
+    border: 1px solid black; /* Black border around the table */
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem; /* Font size of the text */
+    border-radius: 10px; /* Add rounded corners to the entire table */
+    overflow: hidden; /* Ensure corners apply to contents too */
+    text-align: center; /* Align all text to center by default */
+    table-layout: fixed; /* Ensure equal width for all columns */
+}
+
+.results-table th, .results-table td {
+    padding: 0; /* Remove default padding */
+    height: 1.8rem; /* Set cell height to 0.5rem */
+    border: 1px solid white; /* White borders between rows and columns */
+}
+
+.results-table th {
+    background-color: #333; /* Dark background for headers */
+    color: white; /* White text color for headers */
+    font-weight: bold; /* Make header text bold */
+    line-height: 0.5rem; /* Ensure text is vertically centered within the height */
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f6c6c5; /* Light color for even rows */
+}
+
+.results-table tr:nth-child(odd) {
+    background-color: #f6c6c5; /* Light color for odd rows */
+}
+
+.results-table tr:hover {
+    background-color: #e6736f; /* Highlight row on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Specific border-radius for the table header and footer */
+.results-table thead th:first-child {
+    border-top-left-radius: 10px; /* Top-left corner */
+}
+
+.results-table thead th:last-child {
+    border-top-right-radius: 10px; /* Top-right corner */
+}
+
+.results-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Bottom-left corner */
+}
+
+.results-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Bottom-right corner */
+}
+
+
+.align-icon {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center elements horizontally */
+  align-items: center; /* Center elements vertically */
+  gap: 10px; /* Add some spacing between the icon and text */
+  text-align: center; /* Optional, to center-align text inside the container */
+  margin-bottom: 3rem;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+.pagination button {
+    padding: 5px 10px;
+    font-size: 0.5rem;
+    border: 1px solid #ccc;
+    background-color: #333;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.8rem;
+}
+.typography{
+  display: flex;
+  font-weight: 900;
+
+  font-size: 1.3rem;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.h2-typography{
+  display: flex;
+  font-weight: 900;
+
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 1rem;
+
+}
