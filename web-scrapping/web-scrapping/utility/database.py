@@ -4,9 +4,9 @@ import pandas as pd
 
 # Database connection details
 DB_HOST = 'localhost'
-DB_NAME = 'amr-global'
+DB_NAME = 'mydatabase'
 DB_USER = 'postgres'
-DB_PASSWORD = 'postgres'
+DB_PASSWORD = 'password'
 
 
 # Function to create a connection to the PostgreSQL database

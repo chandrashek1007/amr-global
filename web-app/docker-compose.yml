@@ -6,7 +6,7 @@ services:
       context: ./frontend/amr-global-fe
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "3000:3000"
     depends_on:
       - backend
 
@@ -33,6 +33,18 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  cron-service:
+    build:
+      context: ./web-scrapping
+      dockerfile: Dockerfile
+    container_name: cron-service
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   postgres_data:
