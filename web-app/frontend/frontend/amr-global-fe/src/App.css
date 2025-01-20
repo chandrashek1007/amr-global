@@ -1,0 +1,49 @@
+/* Default Theme Variables */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  overflow: hidden; /* Prevent scrolling on the body */
+      font-family: Arial, sans-serif;
+
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --button-bg: #1e90ff;
+  --button-text: #ffffff;
+}
+
+/* Light Theme Variables */
+.light-theme {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}

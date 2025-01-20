@@ -1,0 +1,328 @@
+/* Main container styling */
+.request-alert-container {
+  max-width: 90%;
+  margin: 0 auto;
+
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+}
+
+.align-icon {
+  display: flex
+;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.align-add-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  font-size: 0.9rem;
+ 
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Button styling */
+.button-group {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+/* Search and Clear button styling */
+.add-alert-button {
+  height: 2rem;
+  padding: 1rem 2rem;
+  width: 14rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+.button-text{
+  height: 100%;
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+/* Search button color */
+.add-alert-button {
+  background-color: #d93632;
+  color: #fff;
+}
+
+.add-alert-button:hover {
+  background-color: #cf9291;
+}
+
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 3rem;
+  width: 35rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  height: 2rem;
+  padding: 0.3rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #d93632;
+  outline: none;
+}
+
+/* Button group styling */
+.button-group {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.submit-button,
+.cancel-button {
+  height: 2rem;
+  width: 8rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #d93632;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #b82824;
+}
+
+.cancel-button {
+  background-color: #333;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #555;
+}
+
+/* Alerts table styling */
+.alerts-table-container {
+  margin-top: 30px;
+}
+h2 {
+  margin-top: 3rem;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+.alerts-table {
+
+  width: 100%;
+    border-collapse: collapse; /* Remove gaps between cells */
+    border: 1px solid black; /* Black border around the table */
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem; /* Font size of the text */
+    border-radius: 10px; /* Add rounded corners to the entire table */
+    overflow: hidden; /* Ensure corners apply to contents too */
+    text-align: center; /* Align all text to center by default */
+    table-layout: fixed; /* Ensure equal width for all columns */
+    margin-top: 1rem;
+}
+
+.alerts-table th,
+.alerts-table td {
+  padding: 0; /* Remove default padding */
+  height: 1.8rem; /* Set cell height to 0.5rem */
+  border: 1px solid white; /* White borders between rows and columns */
+}
+
+.alerts-table th {
+  background-color: #333; /* Dark background for headers */
+  color: white; /* White text color for headers */
+  font-weight: bold; /* Make header text bold */
+  line-height: 0.5rem; /* Ensure text is vertically centered within the height */
+}
+
+.alerts-table td {
+  padding: 0; /* Remove default padding */
+  height: 1.8rem; /* Set cell height to 0.5rem */
+  border: 1px solid white; /* White borders between rows and columns */
+}
+
+.alerts-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.alerts-table tr:nth-child(even) {
+  background-color: #f5dada; /* Light color for even rows */
+}
+
+.alerts-table tr:nth-child(odd) {
+  background-color: #f5dada; /* Light color for odd rows */
+}
+
+.alerts-table tr:hover {
+  background-color: #e6736f; /* Highlight row on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Specific border-radius for the table header and footer */
+.alerts-table thead th:first-child {
+  border-top-left-radius: 10px; /* Top-left corner */
+}
+
+.alerts-table thead th:last-child {
+  border-top-right-radius: 10px; /* Top-right corner */
+}
+
+.alerts-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px; /* Bottom-left corner */
+}
+
+.alerts-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px; /* Bottom-right corner */
+}
+
+
+.error-message {
+  color: #d93632;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.edit-delete-split{
+display:flex;
+justify-content:space-evenly;
+align-items: center;
+}
+
+  /* Search and Clear button styling */
+  .btn-delete,
+  .btn-edit {
+    height: 1.5rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
+  }
+
+  /* Search button color */
+  .btn-delete {
+    background-color: #d93632;
+    color: #fff;
+  }
+
+  .btn-delete:hover {
+    background-color: #cf9291;
+  }
+
+  /* Clear button color */
+  .btn-edit {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .btn-edit:hover {
+    background-color: #878585;
+  }
+
+  .modal-typography{
+    display: flex;
+    font-weight: 900;
+
+    font-size: 0.9rem;
+    align-items: center;
+    justify-content: center;
+   
+  }
+  .typography{
+    display: flex;
+    font-weight: 900;
+  
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: center;
+  
+  }
+
+  .h2-typography-text{
+    display: flex;
+    font-weight: 900;
+  
+    font-size: 0.9rem;
+    align-items: center;
+    justify-content: left;
+    
+  
+  }
+
+  .p-typography-text{
+    display: flex;
+    font-weight: 500;
+  
+    font-size: 0.9rem;
+    align-items: center;
+    justify-content: left;
+    margin-top: 1rem;
+  
+  }

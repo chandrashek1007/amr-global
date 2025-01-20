@@ -1,0 +1,49 @@
+.sidebar-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent the parent container from scrolling */
+}
+
+.sidebar {
+  width: 15vw;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  
+  overflow-y: auto; /* Sidebar can scroll if its content overflows */
+  flex-shrink: 0; /* Prevent the sidebar from shrinking */
+}
+
+.sidebar-tab {
+  display: flex;
+  width: 90%;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  text-align: center;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-tab:hover{
+  background-color: #d93632;
+}
+.sidebar-tab.active {
+  background-color: #f6c6c5;
+  color: #000;
+}
+
+.sidebar-content {
+  flex: 1; /* Occupies the remaining space */
+  overflow-y: auto; /* Makes only this section scrollable */
+  padding: 1rem;
+  background-color: #f9f9f9;
+}

@@ -1,0 +1,17 @@
+.footer-bar {
+    position: fixed;
+    bottom: 0px;
+    height: 8px;
+    width: 100%; /* Full width of the parent container */
+    display: flex; /* Flex container */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-color: #000000; /* Optional: Add a background color */
+}
+
+.footer-bar-p {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 10px; /* Optional: Adjust text size */
+    color: #ffffff; /* Optional: Set text color */
+    
+}
